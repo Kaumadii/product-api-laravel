@@ -153,7 +153,7 @@ git init
 git add .
 git commit -m "Initial Laravel Product API"
 git branch -M main
-git remote add origin https://github.com/yourusername/product-api-laravel.git
+git remote add origin https://github.com/Kaumadii/product-api-laravel
 git push -u origin main
 ```
 
