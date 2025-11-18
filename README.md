@@ -1,6 +1,16 @@
-# 📌 Laravel Task Management API – README
+# 📦 Laravel Product API
 
-## 🛠️ Requirements
+This backend project is part of a full‑stack assignment where you build a **Product Listing System** using:
+
+* **Laravel** (Backend REST API)
+* **React.js** (Frontend)
+* **MySQL** (Database)
+
+The Laravel API returns product data through a `/api/products` endpoint, which the React app will fetch and display.
+
+---
+
+# 🛠️ Requirements
 
 Make sure you have installed:
 
@@ -8,25 +18,25 @@ Make sure you have installed:
 * Composer
 * MySQL / XAMPP / WAMP
 * Git
-* Laravel CLI (`composer global require laravel/installer`)
+* Laravel Installer (`composer global require laravel/installer`)
 
 ---
 
 # 🚀 1. Install Project Dependencies
 
-Open your project folder in terminal and run:
+After cloning the project, open the folder in your terminal:
 
 ```
 composer install
 ```
 
-Copy `.env.example` to `.env`:
+Copy the environment file:
 
 ```
 cp .env.example .env
 ```
 
-Generate Laravel APP_KEY:
+Generate Laravel app key:
 
 ```
 php artisan key:generate
@@ -36,7 +46,7 @@ php artisan key:generate
 
 # 🗄️ 2. Configure Database
 
-Open your `.env` file and update:
+Open your `.env` file and update the database settings:
 
 ```
 DB_DATABASE=your_db_name
@@ -44,11 +54,21 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-Create the database in phpMyAdmin or MySQL before running migrations.
+(Create the database first in phpMyAdmin or MySQL.)
 
 ---
 
-# 📌 3. Run Migrations & Seeders
+# 🗃️ 3. Products Migration & Seeder
+
+This project includes a migration for creating a `products` table with:
+
+* id
+* name
+* description
+* price
+* image_url
+
+And a seeder with at least **5 sample products**.
 
 Run migrations:
 
@@ -62,7 +82,7 @@ Run seeders:
 php artisan db:seed
 ```
 
-Or both:
+Or migrate + seed together:
 
 ```
 php artisan migrate --seed
@@ -70,15 +90,41 @@ php artisan migrate --seed
 
 ---
 
-# ▶️ 4. Start Laravel Server
+# 📡 4. API Endpoint
 
-Start development server:
+### **GET /api/products**
+
+Returns all products in JSON format.
+
+**Example Response:**
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Product Name",
+    "description": "Short description here",
+    "price": 199.99,
+    "image_url": "https://example.com/image.jpg"
+  }
+]
+```
+
+You can test the endpoint using **Postman** or your browser:
+
+```
+http://127.0.0.1:8000/api/products
+```
+
+---
+
+# ▶️ 5. Start Laravel Server
 
 ```
 php artisan serve
 ```
 
-URL:
+Your API will run on:
 
 ```
 http://127.0.0.1:8000
@@ -86,58 +132,38 @@ http://127.0.0.1:8000
 
 ---
 
-# 📦 5. API Endpoints (Example)
-
-| Method | Endpoint    | Description   |
-| ------ | ----------- | ------------- |
-| POST   | /login      | User login    |
-| GET    | /tasks      | Get all tasks |
-| POST   | /tasks      | Create task   |
-| PUT    | /tasks/{id} | Update task   |
-| DELETE | /tasks/{id} | Delete task   |
-
----
-
-# 🌿 6. Important Folder Structure
+# 📁 Important Folders
 
 ```
-app/
- └── Http/
-      └── Controllers/
-           └── TaskController.php
-database/
- └── migrations/
- └── seeders/
-routes/
- └── api.php
+app/Models/Product.php
+app/Http/Controllers/ProductController.php
+routes/api.php
+database/migrations/
+database/seeders/
 ```
 
 ---
 
-# 🧪 7. Testing
+# 📤 6. Push Project to GitHub
 
-Use Postman or Thunder Client.
-If authentication is required, use **Bearer Token**.
-
----
-
-# 💻 8. Push Project to GitHub
-
-### First time:
+### First upload:
 
 ```
 git init
 git add .
-git commit -m "Initial Laravel project"
+git commit -m "Initial Laravel Product API"
 git branch -M main
-git remote add origin https://github.com/yourusername/your-repo-name.git
+git remote add origin https://github.com/yourusername/product-api-laravel.git
 git push -u origin main
 ```
 
-### Next updates:
+### After updates:
 
 ```
 git add .
-git commit -m "Update project"
+git commit -m "Updated files"
 git push
 ```
+
+--
+Your backend is now ready to connect with the React frontend! 🎉
