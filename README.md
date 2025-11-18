@@ -49,7 +49,10 @@ php artisan key:generate
 Open your `.env` file and update the database settings:
 
 ```
-DB_DATABASE=your_db_name
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=product_db
 DB_USERNAME=root
 DB_PASSWORD=
 ```
@@ -96,20 +99,6 @@ php artisan migrate --seed
 
 Returns all products in JSON format.
 
-**Example Response:**
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Product Name",
-    "description": "Short description here",
-    "price": 199.99,
-    "image_url": "https://example.com/image.jpg"
-  }
-]
-```
-
 You can test the endpoint using **Postman** or your browser:
 
 ```
@@ -141,29 +130,3 @@ routes/api.php
 database/migrations/
 database/seeders/
 ```
-
----
-
-# 📤 6. Push Project to GitHub
-
-### First upload:
-
-```
-git init
-git add .
-git commit -m "Initial Laravel Product API"
-git branch -M main
-git remote add origin https://github.com/Kaumadii/product-api-laravel
-git push -u origin main
-```
-
-### After updates:
-
-```
-git add .
-git commit -m "Updated files"
-git push
-```
-
---
-Your backend is now ready to connect with the React frontend! 🎉
